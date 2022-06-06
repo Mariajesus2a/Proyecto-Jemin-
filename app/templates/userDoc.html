@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+        <div class="nav-loho">
+            <div class="btn-home">
+                <a class="btn btn-dark mb-3 text-se" href="/dashboard" role="button">
+                    Home</a>
+            </div>
+            <form action="/logout" method="POST" class="d-flex">
+                <input type="submit" class=" btn btn-dark mb-3" value="Logout">
+            </form>
+        </div>
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">¡Bienvenido {{session ['first_name']}}!</p>
+            </h1>
+            <h5>Su espacio <span class="b_titulo">Abogado</span>
+            </h5>
+        </div>
+        <div class="modal-body">
+            <h5 class="card-title">No olvide ingresar estos clientes </h5>
+            <p class="card-text-doc">Podrás encontrar un listado de los útimos 5
+                clientes que ingresaron documentación</p>
+
+            <form action="dashboard/cartera" method="POST" class="dashcart mb-3">
+
+                <ul class="list-group">
+
+                    <div class="docUser">
+
+                        <li class=" scrol list-group-item">
+
+
+                            {%for getLastUser in getLastUsers%}
+                            <ul class="list-group">
+                                <li class=" scrol list-group-item"> <a href="/dashboard/showUser/{{getLastUser.id}}"
+                                        type="button" class="btn btn-link">
+                                        {{ getLastUser.first_name}} {{ getLastUser.last_name}} <br> Creado:
+                                        {{getLastUser.created_at}} </a> </li>
+                            </ul>
+                            {%endfor%}
+
+
+                        </li>
+                    </div>
+                </ul>
+
+            </form>
+
+    </main>
+
+
+    <footer>
+        <nav class=" navbar navbar-dark ">
+            <p class="footer"> © Created by Jemin,inc.</p>
+        </nav>
+    </footer>
+</body>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+        <form action="/logout" method="POST" class="d-flex">
+            <input type="submit" class=" btn btn-dark mb-3" value="Logout">
+        </form>
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">{{session ['first_name']}}, revisa tu estado</p>
+            </h1>
+            <h5>Etapas de tu <span class="b_titulo"> solicitud </span>
+            </h5>
+        </div>
+
+        <div class="list-status">
+            <div class="list-status-boton opacity-100">
+                <p class="txt-status-boton">1</p>
+            </div>
+            <div class="list-status-boton opacity-25">
+                <p class="txt-status-boton">2</p>
+            </div>
+            <div class="list-status-boton opacity-25">
+                <p class="txt-status-boton">3</p>
+            </div>
+            <div class="list-status-boton opacity-25">
+                <p class="txt-status-boton">4</p>
+            </div>
+        </div>
+
+        <ol class="list-group list-group-numbered">
+            <li class=" itemss list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Inicio de tu solicitud</div>
+                    <p> Documentos ingresados</p>
+                </div>
+
+            </li>
+            <li class=" itemss list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">En tramitación</div>
+                    <p>Tus documentos fueron revisados y enviados.</p>
+                </div>
+            </li>
+
+            <li class="itemss list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Citación</div>
+                    <p>Estás citado a firmar a notaria</p>
+                </div>
+            </li>
+
+            <li class="itemss list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Finalizado</div>
+                    <p>Resolución disponible. Pronto tu abogado se pondrá en contacto contigo.</p>
+                </div>
+            </li>
+        </ol>
+
+    </main>
+
+
+    <footer>
+        <nav class=" navbar navbar-dark ">
+            <p class="footer"> © Created by Jemin,inc.</p>
+        </nav>
+    </footer>
+</body>
+
+{% endblock %}

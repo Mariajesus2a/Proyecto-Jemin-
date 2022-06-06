@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+        <form action="/logout" method="POST" class="d-flex">
+            <input type="submit" class=" btn btn-dark mb-3" value="Logout">
+        </form>
+
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">¡Bienvenido {{session ['first_name']}}!
+                </p>
+            </h1>
+            <h5>Su espacio <span class="b_titulo">Abogado</span>
+            </h5>
+        </div>
+        <!-- tarjetas flotantes -->
+        <div class="tarjetas">
+            <!-- documentos de tarjeta flotante -->
+            <section>
+                <button data-bs-toggle="modal" data-bs-target="#archivosModal" data-bs-whatever="@mdo" class="card">
+                    <img src="{{url_for('static',filename='img/carpetas.png')}}" class="carp card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Últimos archivos</h5>
+                        <p class="card-text">Podrá encontrar un listado de los útimos clientes que ingresaron
+                            al sistema. </p>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Ver</a>
+
+                    </div>
+                </button>
+
+                <div class="modal fade" id="archivosModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">Últimos ingresos </h2>
+                                <p>Acá encontrarás los últimos 5 clientes que subieron la documentación. En VER MÁS,
+                                    podrá acceder a todos sus clientes.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/dashboard/userDoc" method="POST" class="mb-3">
+                                    {%for usuarios in getFive%}
+                                    <ul class="list-group">
+                                        <li class="list-group-item"> <a href="/dashboard/showUser/{{usuarios.id}}"
+                                                type="button" class="btn btn-link">
+                                                {{ usuarios.first_name}} {{ usuarios.last_name}} </a> </li>
+                                    </ul>
+                                    {%endfor%}
+
+                                    <div class="col-auto">
+                                        <a href="http:/dashboard/userDoc" type="submit"
+                                            class=" modalButton btn btn-light mb-10">
+                                            Ver Todos</a>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- cartera de clientes flotante -->
+            <section>
+                <button data-bs-toggle="modal" data-bs-target="#carteraModal" data-bs-whatever="@mdo" class="card">
+                    <img src="{{url_for('static',filename='img/peopless.png')}}" class="carp card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cartera de clientes</h5>
+                        <p class="card-text">Revisa aquí toda tu cartera de clientes </p>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Ver</a>
+                    </div>
+                </button>
+
+                <div class="modal fade" id="carteraModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">Cartera de clientes </h2>
+                                <p>Acá encontrará todos sus clientes que subieron la documentación. Si no visualiza el
+                                    que estaba buscando, presiona VER MÁS y accederá al listado completo. </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="dashboard/cartera" method="POST" class="mb-3">
+                                    {%for usuarios in getFive%}
+                                    <ul class="list-group">
+                                        <li class=" scrol list-group-item"> <a
+                                                href="/dashboard/showUser/{{usuarios.id}}" type="button"
+                                                class="btn btn-link">
+                                                {{ usuarios.first_name}} {{ usuarios.last_name}} </a> </li>
+                                    </ul>
+                                    {%endfor%}
+
+                                    <div class="col-auto">
+                                        <a href="/dashboard/cartera" class=" modalButton btn btn-light mb-10">
+                                            Ver Más</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <nav class=" navbar navbar-dark ">
+            <p class="footer"> © Created by Jemin,inc.</p>
+        </nav>
+    </footer>
+</body>
+
+{% endblock %}

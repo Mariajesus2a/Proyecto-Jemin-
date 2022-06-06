@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+        <div class="nav-loho">
+            <div class="btn-home">
+                <a class="btn btn-dark mb-3 text-se" href="/dashboard" role="button">
+                    Home</a>
+            </div>
+            <form action="/logout" method="POST" class="d-flex">
+                <input type="submit" class=" btn btn-dark mb-3" value="Logout">
+            </form>
+        </div>
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">¡Bienvenido {{session ['first_name']}}!</p>
+            </h1>
+            <h5>Su espacio <span class="b_titulo">Abogado</span>
+            </h5>
+        </div>
+        <div class="modal-body">
+
+            <h5 class="card-title">Estado de Cliente <span class="b_titulo">{{documents[0]['first_name']}}
+                    {{documents[0]['last_name']}}</span> </h5>
+
+
+            <form action="dashboard/cartera" method="POST" class="dashcart mb-3">
+
+                <ul class="list-group">
+                    <div class="docUser">
+                        <ol class="list-stat list-group list-group-numbered">
+                            <li class=" itemss list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Inicio de tu solicitud</div>
+                                    <p> Documentos ingresados por cliente.</p>
+                                </div>
+
+                            </li>
+                            <li class=" itemss list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">En tramitación</div>
+                                    <p>Revisar y gestionar.</p>
+                                </div>
+                            </li>
+
+                            <li class="itemss list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Citación</div>
+                                    <p>Citar a cliente para firmar en notaria.</p>
+                                </div>
+                            </li>
+
+                            <li class="itemss list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Finalizado</div>
+                                    <p>Resolución disponible. ¡ALERTA! Ponerse en contacto con cliente.</p>
+                                </div>
+                            </li>
+                        </ol>
+                        <!-- flotante Ver documentos -->
+                        <div>
+                            <div class=" btn-act btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-secondary" for="btnradio1">Actualizar</label>
+                                <!-- flotante documentos -->
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    class="btn btn-outline-secondary" for="btnradio2">Ver
+                                    documento</button>
+                                <div class="list-group">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Selecciona un
+                                                        documento
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                {%for document in documents %}
+                                                <div class="modal-body">
+                                                    <a href="/uploads/{{document['name']}}"
+                                                        class="list-group-item list-group-item-action">{{document['name']}}
+                                                    </a>
+                                                </div>
+                                                {%endfor%}
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="act"> <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="btnradio1">Actualizar</label>
+                            </div>
+                            <div class="act"> <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="btnradio1">Actualizar</label>
+                            </div>
+                            <div class="act"> <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="btnradio1">Actualizar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </ul>
+
+            </form>
+
+    </main>
+
+
+    <footer>
+        <nav class=" navbar navbar-dark ">
+            <p class="footer"> © Created by Jemin,inc.</p>
+        </nav>
+    </footer>
+</body>
+
+{% endblock %}

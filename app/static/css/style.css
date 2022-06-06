@@ -1,0 +1,283 @@
+body{
+    margin: 0%;
+    
+}
+/* nav */
+nav{
+    background-color: black;
+    font-family: "Oswald",sans-serif;
+}
+.logos{
+    height: 35px;
+    border-radius: 50%;
+    margin-left: .5em;
+
+}
+/* loggin */
+.passw{
+    font-size: 8pt;
+}
+/* main */
+.hTitulo{
+    padding: 80px;
+}
+
+.titulo{
+    color: black;
+    font-family: "Oswald",sans-serif;
+    font-size: 64px;
+    font-weight: bolder;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+h5{
+    text-align: center;
+}
+
+.b_titulo{
+    background-color: rgb(97, 92, 19);
+    color: aliceblue;
+}
+
+.eslogan{
+    color: aliceblue;
+    font-size: 64px;
+    font-weight: bolder;
+    font-family: "Oswald";
+}
+
+.subs{
+    margin: 1em;
+}
+
+.nav-loho{
+    display: flex;
+}
+
+#crear{
+    background-color: aqua;
+    height: 70vh;
+    background-image: url("../img/picDivorcio.png");
+    background-position: 50% 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+
+
+.btn-home-uno{
+    color: rgb(255, 236, 201) !important;
+    margin-right: 1em;
+}
+/* @media screen and (min-width:450px){
+    #crear{
+        height: 50vh;
+        background-position: 50% 50%;
+    
+    }
+}
+@media screen and (max-width:650px){
+    #crear{
+        background-image: none;
+    
+    }
+} */
+
+/* section */
+.pfondo{
+
+    margin: 0;
+    height: 800px;
+}
+
+.subs{
+padding-left: 3em;
+}
+
+.modal-header{
+    flex-direction: column;
+}
+
+.modalButtonDos{
+    background-color: rgb(194, 176, 99);
+}
+
+
+/* Pagina de usuario  */
+.select-op{
+    width: 40% !important;
+    margin-left: 3em;
+    background-color: rgb(242, 242, 242);
+    color: rgb(1, 1, 31);
+    justify-content: center;
+}
+.card-header{
+    display: flex;
+    justify-content: center;
+}
+
+.filee{
+    margin: 3em;
+
+}
+.archivo{
+    margin: 1em;
+    color: aliceblue;
+    
+    border-radius: 10%;
+}
+
+footer{
+    margin-bottom: 0% !important;
+    color: rgb(127, 125, 128);
+    background-color: black;
+    align-items: flex-end;
+
+}
+
+
+/* pagina status */
+.list-status{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.list-status-boton{
+    width: 6em;
+    height:6em;
+    border-radius: 50%;
+    background-color: rgb(194, 176, 99);
+    color: rgb(97, 92, 19);
+    text-align: center;
+    box-shadow: 0em 0.2em 0.57em 0.3em rgb(221 220 222);
+}
+
+.txt-status-boton{
+    text-align: center;
+    font-size: 1.4em;
+    font-style: normal;
+    font-weight: bolder;
+    margin-top: 1.5em;
+}
+
+ol{
+    margin-bottom: 4em !important;
+    margin: 10em 43em 2em 6em;
+    
+    
+}
+
+.itemss{
+    margin:.5em;
+    box-shadow: 1em 1em 1em rgb(221, 220, 222);
+
+}
+.tarjetas{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 8em;
+}
+
+.card{
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1em 1em 1em rgb(221, 220, 222);
+    margin: 3em;
+    width: 18em;
+    height: 22em;
+    
+    
+}
+
+.carp{
+    height: 150px;
+    width: 150px;
+}
+
+.scrol{
+    overflow: scroll;
+    margin: .5em;
+
+    /* revisar , porque no me funciona  */
+}
+
+/* UserDoc */
+.card-text-doc{
+    margin-bottom: 3em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.docUser{
+    display: flex;
+    align-items: center;
+}
+
+.dashcart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cartera */
+.carteraBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnCart{
+    display: flex;
+}
+
+.contador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.contadorBody{
+    /* margin: 1em; */
+    background-color: rgb(196, 156, 48);
+}
+
+.carb{
+    width: 20em;
+}
+
+a{
+    color: rgb(109, 102, 43) !important;
+    font-size: 12pt !important;
+    font-weight: bold !important;
+   
+}
+
+/* show user */
+.btn-act{
+  
+    margin-top: 10em;
+}
+
+.list-stat{
+    margin: 10em 8em 2em 6em;
+}
+.act{
+    margin: 4em 0em;
+}
+
+.foot{
+    margin-top: 0em;
+}

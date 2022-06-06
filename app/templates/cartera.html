@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+        <div class="nav-loho">
+            <div class="btn-home">
+                <a class="btn btn-dark mb-3 text-se" href="/dashboard" role="button">
+                    Home</a>
+            </div>
+            <form action="/logout" method="POST" class="d-flex">
+                <input type="submit" class=" btn btn-dark mb-3" value="Logout">
+            </form>
+        </div>
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">¡Bienvenido {{session ['first_name']}}!</p>
+            </h1>
+            <h5>Tiene <span class=" contadorBody badge ">Toda</span> la cartera de Clientes!
+            </h5>
+
+        </div>
+
+        <div class=" carteraBody  modal-body scrollspy-example" data-bs-spy="scroll" data-bs-target="#list-example"
+            data-bs-offset="0" tabindex="0">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+
+                </div>
+            </nav>
+            <form action="dashboard/cartera" method="POST" class=" mb-3">
+                {% for carteras in cartera %}
+                <div class="  carBody">
+                    <ul class=" carb list-group">
+
+                        <li class=" scrol list-group-item"> <img class="logos"
+                                src="{{url_for('static',filename='img/persona.png')}}" alt="icono-persona"> <a
+                                href="/dashboard/showUser/{{carteras.id}}" class="btn btn-link">
+                                {{carteras.first_name}} {{ carteras.last_name}}</a> </li>
+                    </ul>
+
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </main>
+
+
+    <footer>
+        <nav class=" navbar navbar-dark ">
+            <p class="footer"> © Created by Jemin,inc.</p>
+        </nav>
+    </footer>
+</body>
+
+{% endblock %}

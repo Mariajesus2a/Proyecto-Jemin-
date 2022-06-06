@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<title>Jemin</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    {% endwith %}
+
+    <nav class=" navbar navbar-dark ">
+        <a href="#"> <img class="logos" src="{{url_for('static',filename='img/lface.jpg')}}" alt="logo_facebook">
+        </a>
+    </nav>
+    <main>
+        <div class="hTitulo">
+            <h1>
+                <p class="titulo">APLICACIÓN JEMIN</p>
+            </h1>
+            <h5>Bienvenidos a <span class="b_titulo">Jemin`s</span>
+            </h5>
+        </div>
+    </main>
+    <section>
+        <div id="crear">
+            <p class="eslogan">Haz tus trámites online</p>
+            <button type="button" class="subs btn btn-light" data-bs-toggle="modal" data-bs-target="#registroModal"
+                data-bs-whatever="@mdo">Crear Cuenta</button>
+            <button type="button" class="subs btn btn-light" data-bs-toggle="modal" data-bs-target="#login"
+                data-bs-whatever="@getbootstrap">Iniciar sesion</button>
+
+        </div>
+
+
+        <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Crea tu Cuenta </h2>
+                        <p>Acá podrás ingresar tus documentos y además dar seguimiento a tu solicitud.</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/register" method="POST" class="mb-3">
+
+                            <label for="firstName" class="form-label">
+                                Nombre:</label>
+                            <input type="text" name="firstName" value="" class="form-control">
+
+                            <label for="lastName" class="form-label">
+                                Apellido:</label>
+                            <input type="text" name="lastName" value="" class="form-control">
+
+                            <label for="email" class="form-label">
+                                Email:</label>
+                            <input type="text" name="email" value="" class="form-control">
+
+                            <div class="mb-3 row">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control" id="inputPassword">
+                                    <p class="passw">*Contraseña debe tener minimo 8 caracteres.</p>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="confirmPassword" class="form-label"> Confirmar Contraseña</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="confirmPassword" class="form-control"
+                                        id="inputPassword">
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class=" modalButtonDos btn btn-primary mb-10">Registrar</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Iniciar sesion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/login" method="POST">
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm- col-form-label"> Email </label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="email" class="form-control" placeholder="email@gmail.com"
+                                        id="staticEmail">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-3 col-form-label"> Contraseña </label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control" id="inputPassword">
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class=" modalButtonDos btn btn-primary mb-3">Ingresar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer"> © Created by Jemin,inc.</p>
+    </footer>
+
+
+</body>
+
+{% endblock %}
