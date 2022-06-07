@@ -46,8 +46,11 @@
         </div>
         <div class="modal-body">
 
-            <h5 class="card-title">Estado de Cliente <span class="b_titulo">{{documents[0]['first_name']}}
-                    {{documents[0]['last_name']}}</span> </h5>
+            <h5 class="card-title">Estado de Cliente
+                <span class="b_titulo">{{cliente['first_name']}}
+                    {{cliente['last_name']}}
+                </span>
+            </h5>
 
 
             <form action="dashboard/cartera" method="POST" class="dashcart mb-3">
@@ -104,6 +107,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
+                                                {%if documents%}
                                                 {%for document in documents %}
                                                 <div class="modal-body">
                                                     <a href="/uploads/{{document['name']}}"
@@ -111,6 +115,9 @@
                                                     </a>
                                                 </div>
                                                 {%endfor%}
+                                                {%else%}
+                                                <p> ¡Usuario no tiene documentos!</p>
+                                                {%endif%}
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cerrar</button>

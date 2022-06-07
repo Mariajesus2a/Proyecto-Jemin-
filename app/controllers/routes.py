@@ -190,12 +190,12 @@ def showUser(id):
     }
     getUser = Docu.get_doc_by_iduser(data)
     print(getUser)
+    cliente = Users.get_one({"id": id})
     if getUser == None:
         flash("No tiene Documentos!")
-        return render_template('showUser.html')
-
+        return render_template('showUser.html', cliente=cliente)
     else:
-        return render_template('showUser.html', documents=getUser)
+        return render_template('showUser.html', documents=getUser, cliente=cliente)
 
 
 # @app.route('/dashboard/cartera', methods=['GET'])
