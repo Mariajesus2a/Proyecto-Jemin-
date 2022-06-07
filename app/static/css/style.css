@@ -57,7 +57,7 @@ h5{
 }
 
 #crear{
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
     height: 70vh;
     background-image: url("../img/picDivorcio.png");
     background-position: 50% 50%;

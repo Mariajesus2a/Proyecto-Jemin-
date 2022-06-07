@@ -1,5 +1,6 @@
 from flask import Flask
-UPLOAD_FOLDER = '/Users/mariajesusarancibia/Documents/codindojo/work/proyecto_pp/app_jemin/app/static/uploads'
+import pathlib
+UPLOAD_FOLDER = f'{pathlib.Path(__file__).parent.resolve()}/static/uploads'
 app = Flask(__name__)
 app.secret_key = "shhh"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
